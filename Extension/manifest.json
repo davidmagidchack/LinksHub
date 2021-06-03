@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Time tracker",
+  "description": "use this extension to send url and time to server",
+  "author": "Ashkan Ganj",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "/icons/128.png",
+    "default_title": "Time Tracker",
+    "default_popup":"popup.html"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "http://127.0.0.1:8000/*",
+    "http://ashkanganj.pythonanywhere.com/*",
+    "storage",
+    "http://*/", 
+    "https://*/",
+    "webNavigation"
+    
+    
+  ],
+  "content_scripts": 
+  [
+      {
+          "matches": ["http://127.0.0.1:8000/*"],  
+          "js": ["packages/jquery-3.5.0.min.js","popup.js"]
+      }
+  ],
+  
+  "background": {
+    "scripts": [
+      "background.js","packages/jquery-3.5.0.min.js"
+    ],
+    "persistent": false
+  }
+}
